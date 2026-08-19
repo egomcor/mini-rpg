@@ -45,6 +45,14 @@ Conceptos vistos:
 - Las órdenes de una regla comienzan con una tabulación.
 - Make compara fechas y evita compilaciones innecesarias.
 
+### Atajos utilizados en VS Code
+
+- `Ctrl + →` desplaza el cursor hasta el comienzo de la palabra siguiente; pulsándolo sucesivamente se llega al final de la línea en el teclado utilizado.
+- `Ctrl + J` muestra u oculta el panel inferior, donde se encuentra el terminal integrado cuando está seleccionado.
+- `Ctrl + B` muestra u oculta la barra lateral izquierda.
+
+Estos atajos agilizan la alternancia entre la edición del código, el terminal y el explorador del proyecto.
+
 ## El ejercicio: mini-RPG
 
 Construiremos gradualmente un combate por turnos entre un héroe y una criatura. Cada hito debe compilar sin advertencias y producir un cambio visible o comprobable.
