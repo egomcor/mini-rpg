@@ -198,3 +198,36 @@ build/
 ```
 
 Criterio de trabajo: crear un commit cuando se complete un reto que compile y funcione, no por cada pequeña edición.
+
+### Unificar commits locales
+
+Para reemplazar varios commits locales consecutivos por uno solo se identificó primero el último commit que debía conservarse sin cambios:
+
+```text
+7b93db5 Valida la entrada numérica del jugador
+a3f2f14 Solucionado la variable opcion no estaba declarada
+10a8e22 Corrige el estilo de main.c
+011b984 Documenta los criterios de estilo del código C
+```
+
+Se movió `main` hasta `011b984`, manteniendo preparados todos los cambios posteriores:
+
+```bash
+git reset --soft 011b984
+```
+
+`--soft` mueve `HEAD` y la rama, pero no modifica los archivos de trabajo ni el área de preparación. Los cambios acumulados de los tres commits quedaron listos para crear uno nuevo:
+
+```bash
+git commit -m "Valida la entrada numérica del jugador"
+```
+
+Antes de reescribir el historial se comprobó que el árbol estuviera limpio y que no existiera un remoto con esos commits publicados:
+
+```bash
+git status --short
+git remote -v
+git log --oneline --graph
+```
+
+Esta técnica debe limitarse a commits locales. Si ya se han compartido, reescribirlos puede complicar el trabajo de otras personas. Los commits retirados de la historia normal suelen poder localizarse temporalmente mediante `git reflog`.
