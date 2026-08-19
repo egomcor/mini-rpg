@@ -55,13 +55,18 @@ Salida actual:
 === MINI-RPG ===
 Héroe:    30/30 PV
 Criatura: 20 PV
+1. Atacar
+2. Curarse
+Elige una acción:1
+Has elegido la opción 1.
 ```
 
 ### Retos
 
 - [x] Crear la estructura mínima del programa.
 - [x] Declarar y mostrar la vida de los combatientes.
-- [ ] Leer la acción del jugador y mostrar un menú.
+- [x] Leer la acción del jugador y mostrar un menú.
+- [ ] Validar una entrada que no sea numérica.
 - [ ] Implementar ataque, curación y límites de vida.
 - [ ] Añadir el turno de la criatura.
 - [ ] Repetir turnos hasta la victoria o la derrota.
@@ -107,6 +112,19 @@ printf("Héroe: %d/%d PV\n", vida_heroe, VIDA_MAXIMA);
 - `%d` inserta un valor de tipo `int`.
 - Los valores se proporcionan en el mismo orden que sus marcadores.
 - `\n` introduce un salto de línea.
+
+### Entrada inicial con `scanf`
+
+```c
+int opcion = 0;
+scanf("%d", &opcion);
+```
+
+- `%d` solicita la conversión de la entrada a un valor de tipo `int`.
+- `&opcion` proporciona la dirección de memoria donde `scanf` debe escribir el resultado.
+- Si se introduce un entero, `opcion` recibe su valor.
+- Si se introduce texto como `hola`, la conversión falla y `opcion` conserva su valor anterior; el texto no se convierte en cero.
+- La siguiente mejora será comprobar el valor devuelto por `scanf` para detectar el fallo.
 
 ## Git aprendido
 
