@@ -79,7 +79,7 @@ La criatura tiene 15 PV.
 - [x] Validar una entrada que no sea numérica.
 - [x] Distinguir ataque, curación y opciones enteras no válidas.
 - [x] Reducir la vida de la criatura al atacar.
-- [ ] Implementar ataque, curación y límites de vida.
+- [x] Implementar ataque, curación y límites de vida.
 - [ ] Añadir el turno de la criatura.
 - [ ] Repetir turnos hasta la victoria o la derrota.
 - [ ] Separar responsabilidades mediante funciones.
@@ -181,6 +181,29 @@ printf("La criatura tiene %d PV.\n", vida_criatura);
 ```
 
 La expresión situada a la derecha se calcula primero y el resultado se asigna de nuevo a `vida_criatura`. Así, partiendo de `20`, el primer ataque deja la vida en `15`. Más adelante se estudiará una escritura abreviada para esta operación.
+
+La curación recupera `5 PV` sin superar la vida máxima:
+
+```c
+if (vida_heroe < VIDA_MAXIMA) {
+    if ((VIDA_MAXIMA - vida_heroe) >= 5) {
+        vida_heroe = vida_heroe + 5;
+    } else {
+        vida_heroe = VIDA_MAXIMA;
+    }
+
+    printf("Te curas.\n");
+    printf("El héroe tiene %d/%d PV.\n", vida_heroe, VIDA_MAXIMA);
+} else {
+    printf("Ya tienes la vida al máximo.\n");
+}
+```
+
+- Un `if` puede contener otro `if` para distinguir decisiones dependientes.
+- Si faltan al menos `5 PV`, se suma la curación completa.
+- Si faltan menos de `5 PV`, se asigna directamente `VIDA_MAXIMA` para no sobrepasarla.
+- Si la vida ya está completa, el `else` exterior informa de que no es posible curarse más.
+- Se probaron los estados iniciales `20`, `27` y `30`: producen respectivamente `25`, `30` y el aviso de vida máxima.
 
 ### Criterios de orden y estilo
 

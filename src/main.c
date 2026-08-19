@@ -31,13 +31,24 @@ int main(void)
     }
 
     if (opcion == 1) {
-        printf("\nAtacas a la criatura.\n");
+        printf("Atacas a la criatura.\n");
         vida_criatura = vida_criatura - 5;
         printf("La criatura tiene %d PV.\n", vida_criatura);
     } else if (opcion == 2) {
-        printf("\nTe curas.\n");
+        if (vida_heroe < VIDA_MAXIMA) {
+            if ((VIDA_MAXIMA - vida_heroe) >= 5) {
+                vida_heroe = vida_heroe + 5;
+            } else {
+                vida_heroe = VIDA_MAXIMA;
+            }
+
+            printf("Te curas.\n");
+            printf("El héroe tiene %d/%d PV.\n", vida_heroe, VIDA_MAXIMA);
+        } else {
+            printf("Ya tienes la vida al máximo.\n");
+        }
     } else {
-        printf("\nOpción no válida.\n");
+        printf("Opción no válida.\n");
     }
 
     return 0;
