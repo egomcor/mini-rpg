@@ -2,6 +2,8 @@
 
 Proyecto para recuperar la programación en C de forma práctica mientras se trabajan los temas 31 y 32 del temario oficial y, más adelante, su conexión con el tema 33 de ensamblador.
 
+Este README es un cuaderno de laboratorio vivo: Codex lo actualiza automáticamente al cerrar cada paso relevante y cada modificación queda registrada en un commit.
+
 ## Compilador y herramientas
 
 ### GCC
