@@ -47,7 +47,8 @@ Conceptos vistos:
 
 ### Atajos utilizados en VS Code
 
-- `Ctrl + →` desplaza el cursor hasta el comienzo de la palabra siguiente; pulsándolo sucesivamente se llega al final de la línea en el teclado utilizado.
+- `Ctrl + →` desplaza el cursor hasta el comienzo de la palabra siguiente; pulsándolo sucesivamente se llega al final de la línea.
+- En el teclado utilizado, al configurar la rueda en modo de desplazamiento, pulsarla funciona como la tecla `Fin` y lleva directamente al final de la línea.
 - `Ctrl + J` muestra u oculta el panel inferior, donde se encuentra el terminal integrado cuando está seleccionado.
 - `Ctrl + B` muestra u oculta la barra lateral izquierda.
 
