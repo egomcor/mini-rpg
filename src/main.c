@@ -51,5 +51,11 @@ int main(void)
         printf("Opción no válida.\n");
     }
 
+    if (opcion == 1 || opcion == 2) {
+        printf("La criatura te ataca.\n");
+        vida_heroe = vida_heroe - 4;
+        printf("El héroe tiene %d/%d PV.\n", vida_heroe, VIDA_MAXIMA);
+    }
+
     return 0;
 }

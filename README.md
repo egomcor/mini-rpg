@@ -80,7 +80,7 @@ La criatura tiene 15 PV.
 - [x] Distinguir ataque, curación y opciones enteras no válidas.
 - [x] Reducir la vida de la criatura al atacar.
 - [x] Implementar ataque, curación y límites de vida.
-- [ ] Añadir el turno de la criatura.
+- [x] Añadir el turno de la criatura.
 - [ ] Repetir turnos hasta la victoria o la derrota.
 - [ ] Separar responsabilidades mediante funciones.
 - [ ] Representar personajes mediante `struct`.
@@ -204,6 +204,24 @@ if (vida_heroe < VIDA_MAXIMA) {
 - Si faltan menos de `5 PV`, se asigna directamente `VIDA_MAXIMA` para no sobrepasarla.
 - Si la vida ya está completa, el `else` exterior informa de que no es posible curarse más.
 - Se probaron los estados iniciales `20`, `27` y `30`: producen respectivamente `25`, `30` y el aviso de vida máxima.
+
+### Turno de la criatura y operador lógico `||`
+
+Después de una acción válida, la criatura contraataca y resta `4 PV` al héroe:
+
+```c
+if (opcion == 1 || opcion == 2) {
+    printf("La criatura te ataca.\n");
+    vida_heroe = vida_heroe - 4;
+    printf("El héroe tiene %d/%d PV.\n", vida_heroe, VIDA_MAXIMA);
+}
+```
+
+- `||` representa el operador lógico «o».
+- La condición es verdadera cuando `opcion` vale `1` o cuando vale `2`.
+- El contraataque se escribe una sola vez después de procesar la acción del jugador.
+- Una opción inválida no cumple ninguna de las dos comparaciones y, por tanto, no concede turno a la criatura.
+- En esta fase no se controla todavía si el ataque reduce la vida hasta cero ni se repiten turnos.
 
 ### Criterios de orden y estilo
 
