@@ -126,6 +126,38 @@ scanf("%d", &opcion);
 - Si se introduce texto como `hola`, la conversión falla y `opcion` conserva su valor anterior; el texto no se convierte en cero.
 - La siguiente mejora será comprobar el valor devuelto por `scanf` para detectar el fallo.
 
+### Criterios de orden y estilo
+
+Las declaraciones se agrupan por finalidad. Primero se sitúan las constantes y después las variables de estado y de entrada:
+
+```c
+const int vida_maxima = 30;
+
+int vida_heroe = 30;
+int vida_criatura = 20;
+int opcion = 0;
+```
+
+- Se utiliza un único espacio alrededor de `=` en vez de alinear columnas manualmente; así los cambios futuros son más sencillos y producen diferencias más limpias en Git.
+- Las mayúsculas completas se reservan preferentemente para macros. Una constante local declarada con `const` puede conservar el estilo `snake_case`.
+- Las líneas en blanco separan fases conceptuales: declarar, mostrar, leer, procesar y terminar.
+- Se evita acumular varias líneas vacías consecutivas.
+
+C permite dividir una cadena larga en literales consecutivos, que el compilador concatena:
+
+```c
+printf(
+    "=== MINI-RPG ===\n"
+    "Héroe:    %d/%d PV\n"
+    "Criatura: %d PV\n",
+    vida_heroe,
+    vida_maxima,
+    vida_criatura
+);
+```
+
+El formato debe ayudar a reconocer la estructura del programa. Más adelante se podrá incorporar `clang-format` para automatizar espacios y saltos de línea, una vez decidido el estilo deseado.
+
 ## Git aprendido
 
 El repositorio utiliza la rama principal `main`.
