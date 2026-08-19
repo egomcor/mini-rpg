@@ -32,6 +32,8 @@ int main(void)
 
     if (opcion == 1) {
         printf("\nAtacas a la criatura.\n");
+        vida_criatura = vida_criatura - 5;
+        printf("La criatura tiene %d PV.\n", vida_criatura);
     } else if (opcion == 2) {
         printf("\nTe curas.\n");
     } else {

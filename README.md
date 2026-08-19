@@ -59,6 +59,7 @@ Criatura: 20 PV
 2. Curarse
 Elige una acción:1
 Atacas a la criatura.
+La criatura tiene 15 PV.
 ```
 
 ### Retos
@@ -68,6 +69,7 @@ Atacas a la criatura.
 - [x] Leer la acción del jugador y mostrar un menú.
 - [x] Validar una entrada que no sea numérica.
 - [x] Distinguir ataque, curación y opciones enteras no válidas.
+- [x] Reducir la vida de la criatura al atacar.
 - [ ] Implementar ataque, curación y límites de vida.
 - [ ] Añadir el turno de la criatura.
 - [ ] Repetir turnos hasta la victoria o la derrota.
@@ -159,6 +161,17 @@ if (opcion == 1) {
 - Las condiciones se evalúan en orden y solo se ejecuta la primera rama aplicable.
 - `else` recoge cualquier entero distinto de `1` y `2`.
 - Se mantienen las llaves incluso en bloques de una sola instrucción para facilitar cambios posteriores.
+
+### Modificación del estado
+
+El ataque modifica la vida de la criatura antes de mostrar su nuevo valor:
+
+```c
+vida_criatura = vida_criatura - 5;
+printf("La criatura tiene %d PV.\n", vida_criatura);
+```
+
+La expresión situada a la derecha se calcula primero y el resultado se asigna de nuevo a `vida_criatura`. Así, partiendo de `20`, el primer ataque deja la vida en `15`. Más adelante se estudiará una escritura abreviada para esta operación.
 
 ### Criterios de orden y estilo
 
