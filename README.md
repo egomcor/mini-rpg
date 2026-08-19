@@ -58,7 +58,7 @@ Criatura: 20 PV
 1. Atacar
 2. Curarse
 Elige una acción:1
-Has elegido la opción 1.
+Atacas a la criatura.
 ```
 
 ### Retos
@@ -67,6 +67,7 @@ Has elegido la opción 1.
 - [x] Declarar y mostrar la vida de los combatientes.
 - [x] Leer la acción del jugador y mostrar un menú.
 - [x] Validar una entrada que no sea numérica.
+- [x] Distinguir ataque, curación y opciones enteras no válidas.
 - [ ] Implementar ataque, curación y límites de vida.
 - [ ] Añadir el turno de la criatura.
 - [ ] Repetir turnos hasta la victoria o la derrota.
@@ -139,6 +140,25 @@ if (datos_leidos != 1) {
 - `return 1` comunica que el programa terminó debido a un error.
 - Tras ejecutar directamente `./mini-rpg`, `echo $?` muestra el código devuelto por el programa.
 - Tras ejecutar `make run`, un fallo `1` de `mini-rpg` hace fallar la receta y Make termina con su propio código `2`; en ese caso `echo $?` observa el estado de Make, no directamente el del juego.
+
+### Decisiones con `if`, `else if` y `else`
+
+El valor introducido se compara para elegir una única acción:
+
+```c
+if (opcion == 1) {
+    printf("\nAtacas a la criatura.\n");
+} else if (opcion == 2) {
+    printf("\nTe curas.\n");
+} else {
+    printf("\nOpción no válida.\n");
+}
+```
+
+- `==` compara dos valores; no debe confundirse con `=`, que realiza una asignación.
+- Las condiciones se evalúan en orden y solo se ejecuta la primera rama aplicable.
+- `else` recoge cualquier entero distinto de `1` y `2`.
+- Se mantienen las llaves incluso en bloques de una sola instrucción para facilitar cambios posteriores.
 
 ### Criterios de orden y estilo
 

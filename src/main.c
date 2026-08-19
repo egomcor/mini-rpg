@@ -30,7 +30,13 @@ int main(void)
         return 1;
     }
 
-    printf("Has elegido la opción %d.\n", opcion);
+    if (opcion == 1) {
+        printf("\nAtacas a la criatura.\n");
+    } else if (opcion == 2) {
+        printf("\nTe curas.\n");
+    } else {
+        printf("\nOpción no válida.\n");
+    }
 
     return 0;
 }
