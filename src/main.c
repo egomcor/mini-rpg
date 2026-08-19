@@ -2,18 +2,35 @@
 
 int main(void)
 {
-    int         vida_heroe      = 30;
-    int         vida_criatura   = 20;
-    const int   VIDA_MAXIMA     = 30;
+    int vida_heroe = 30;
+    int vida_criatura = 20;
+    const int VIDA_MAXIMA = 30;
 
-    int         opcion          = 0;
+    printf(
+        "=== MINI-RPG ===\n"
+        "Héroe:    %d/%d PV\n"
+        "Criatura: %d PV\n",
+        vida_heroe,
+        VIDA_MAXIMA,
+        vida_criatura
+    );
 
-    printf("=== MINI-RPG ===\nHéroe:    %d/%d PV\nCriatura: %d PV\n", 
-        vida_heroe, VIDA_MAXIMA, vida_criatura);
-    printf("1. Atacar\n2. Curarse\nElige una acción:");
-    scanf("%d", &opcion);
+    printf(
+        "\n"
+        "1. Atacar\n"
+        "2. Curarse\n"
+        "Elige una acción: "
+    );
+
+    int opcion = 0;
+    int datos_leidos = scanf("%d", &opcion);
+
+    if (datos_leidos != 1) {
+        printf("Error: debes introducir un número.\n");
+        return 1;
+    }
+
     printf("Has elegido la opción %d.\n", opcion);
-
 
     return 0;
 }

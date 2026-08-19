@@ -66,7 +66,7 @@ Has elegido la opción 1.
 - [x] Crear la estructura mínima del programa.
 - [x] Declarar y mostrar la vida de los combatientes.
 - [x] Leer la acción del jugador y mostrar un menú.
-- [ ] Validar una entrada que no sea numérica.
+- [x] Validar una entrada que no sea numérica.
 - [ ] Implementar ataque, curación y límites de vida.
 - [ ] Añadir el turno de la criatura.
 - [ ] Repetir turnos hasta la victoria o la derrota.
@@ -124,7 +124,21 @@ scanf("%d", &opcion);
 - `&opcion` proporciona la dirección de memoria donde `scanf` debe escribir el resultado.
 - Si se introduce un entero, `opcion` recibe su valor.
 - Si se introduce texto como `hola`, la conversión falla y `opcion` conserva su valor anterior; el texto no se convierte en cero.
-- La siguiente mejora será comprobar el valor devuelto por `scanf` para detectar el fallo.
+- `scanf` devuelve el número de conversiones realizadas correctamente. El programa guarda ese resultado y exige que sea `1`:
+
+```c
+int datos_leidos = scanf("%d", &opcion);
+
+if (datos_leidos != 1) {
+    printf("Error: debes introducir un número.\n");
+    return 1;
+}
+```
+
+- `return 0` comunica al sistema una terminación correcta.
+- `return 1` comunica que el programa terminó debido a un error.
+- Tras ejecutar directamente `./mini-rpg`, `echo $?` muestra el código devuelto por el programa.
+- Tras ejecutar `make run`, un fallo `1` de `mini-rpg` hace fallar la receta y Make termina con su propio código `2`; en ese caso `echo $?` observa el estado de Make, no directamente el del juego.
 
 ### Criterios de orden y estilo
 
