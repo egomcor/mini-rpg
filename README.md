@@ -81,7 +81,7 @@ La criatura tiene 15 PV.
 - [x] Reducir la vida de la criatura al atacar.
 - [x] Implementar ataque, curación y límites de vida.
 - [x] Añadir el turno de la criatura.
-- [ ] Repetir turnos hasta la victoria o la derrota.
+- [x] Repetir turnos hasta la victoria o la derrota.
 - [ ] Separar responsabilidades mediante funciones.
 - [ ] Representar personajes mediante `struct`.
 - [ ] Incorporar daño aleatorio.
@@ -221,7 +221,26 @@ if (opcion == 1 || opcion == 2) {
 - La condición es verdadera cuando `opcion` vale `1` o cuando vale `2`.
 - El contraataque se escribe una sola vez después de procesar la acción del jugador.
 - Una opción inválida no cumple ninguna de las dos comparaciones y, por tanto, no concede turno a la criatura.
-- En esta fase no se controla todavía si el ataque reduce la vida hasta cero ni se repiten turnos.
+
+### Bucle de combate con `while` y `&&`
+
+El combate se repite mientras ambos personajes continúan vivos:
+
+```c
+while (vida_criatura > 0 && vida_heroe > 0) {
+    /* mostrar el estado, leer y procesar el turno */
+}
+```
+
+- `while` comprueba la condición antes de cada vuelta y ejecuta nuevamente su bloque mientras sea verdadera.
+- `&&` representa el operador lógico «y»: ambas comparaciones deben ser verdaderas para comenzar otro turno.
+- El estado y el menú se muestran dentro del bucle para reflejar las vidas actualizadas.
+- Las variables `opcion` y `datos_leidos` se declaran antes del bucle y reciben nuevos valores durante cada turno.
+- Una opción entera distinta de `1` y `2` no provoca el contraataque y permite comenzar otro turno.
+- El contraataque exige además que `vida_criatura > 0`, por lo que la criatura no actúa después del golpe definitivo.
+- Al finalizar el bucle se comprueba qué personaje llegó a cero y se anuncia la victoria o la derrota.
+
+Se intentó inicialmente usar `continue` después de una conversión fallida de `scanf`. Esto produjo un bucle infinito: el texto no convertible permanecía en la entrada y cada vuelta volvía a encontrarlo. Hasta estudiar cómo limpiar el búfer de entrada, el programa informa del error y termina con `return 1`.
 
 ### Criterios de orden y estilo
 
